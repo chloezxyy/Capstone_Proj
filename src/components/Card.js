@@ -1,66 +1,106 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import CardMedia from "@material-ui/core/CardMedia";
+import { Card, Button, ListGroup, Modal } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
-const useStyles = makeStyles({
-  card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
+class FundingCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    };
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
   }
-});
 
-var FundCard = () => {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        <CardMedia
-          className={classes.media}
-          image="https://greencoast.org/wp-content/uploads/2019/02/Eco-Worthy-Review-and-Buying-Guide-1024x524.jpg"
-          title="Paella dish"
-        />
-        <Typography variant="h5" component="h2">
-          Solar Panel 1
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
-};
+  handleClose = () => {
+    this.setState({ show: false });
+  };
 
-export default FundCard;
+  handleOpen = () => {
+    this.setState({ show: true });
+  };
 
-// export default function SimpleCard() {
+  render() {
+    return (
+      <div className="mb-3">
+        <Card>
+          <Card.Img
+            variant="top"
+            src="http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/pagePropertiesImage/vietnam.jpg.jpg"
+          />
+          <Card.Body>
+            <Card.Title>
+              <b>{this.props.title}</b>
+            </Card.Title>
+            <small>Vietnam</small>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <div>
+                  <b>
+                    <small>
+                      <b>Collected</b>
+                    </small>
+                  </b>
+                  <p>SGD 300</p>
+                </div>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <div className="row">
+                  <div className="col-6">
+                    <b>
+                      <small>
+                        <b>Yield</b>
+                      </small>
+                    </b>
+                    <p>12%</p>
+                  </div>
+                  <div className="col-6">
+                    <b>
+                      <small>
+                        <b>Tenor</b>
+                      </small>
+                    </b>
+                    <p>6 m</p>
+                  </div>
+                </div>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <b>
+                  <small>
+                    <b>Status</b>
+                  </small>
+                </b>
+                <p>In Progress</p>
+              </ListGroup.Item>
+              <Button variant="primary" onClick={this.handleOpen}>
+                Invest
+              </Button>
+            </ListGroup>
+          </Card.Body>
+        </Card>
+        <Modal
+          show={this.state.show}
+          onHide={this.handleClose}
+          animation={false}
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{this.props.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+}
 
-//   );
-// }
+// export default FundingCard;
+export default withRouter(FundingCard);

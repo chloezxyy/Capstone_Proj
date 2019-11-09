@@ -25,8 +25,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" component={Homepage} exact />
-          <Route path="/invest" component={Funding} exact />
+          <Route exact path="/" component={Homepage} />
+          <Route path="/invest" component={Funding} />
           <Route path="/card" component={FundCard} exact />
         </Switch>
       </div>
