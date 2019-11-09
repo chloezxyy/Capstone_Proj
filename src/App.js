@@ -10,6 +10,13 @@ import {
 import Homepage from "./Homepage";
 import Funding from "./Funding";
 import FundCard from "./components/Card";
+import WorkflowPage from "./WorkflowPage";
+import Navbar from "./Navbar";
+import P1 from "./WorkflowPages/P1";
+import P2 from "./WorkflowPages/P2";
+import P3 from "./WorkflowPages/P3";
+import P4 from "./WorkflowPages/P4";
+import P5 from "./WorkflowPages/P5";
 
 function App() {
   return (
@@ -28,6 +35,13 @@ function App() {
           <Route exact path="/" component={Homepage} />
           <Route path="/invest" component={Funding} />
           <Route path="/card" component={FundCard} exact />
+          <Route path="/workflow" component={WorkflowPage} exact />
+          <Route path="/workflow/1" component={P1} exact />
+          <Route path="/workflow/2" component={P2} exact />
+          <Route path="/workflow/3" component={P3} exact />
+          <Route path="/workflow/4" component={P4} exact />
+          <Route path="/workflow/5" component={P5} exact />
+          <Route path="/navbar" component={Navbar} />
         </Switch>
       </div>
     </Router>
