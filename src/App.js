@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-import Homepage from './Homepage'
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import Homepage from "./Homepage";
+import Funding from "./Funding";
+import FundCard from "./components/Card";
 
 function App() {
   return (
@@ -18,7 +25,9 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" component={Homepage} exact/>
+          <Route path="/" component={Homepage} exact />
+          <Route path="/invest" component={Funding} exact />
+          <Route path="/card" component={FundCard} exact />
         </Switch>
       </div>
     </Router>
