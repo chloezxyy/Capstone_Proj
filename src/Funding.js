@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { url } from "inspector";
 import FundingCard from "./components/Card";
+import Navbar from "./Navbar";
 
 class Funding extends Component {
   render() {
@@ -14,6 +15,7 @@ class Funding extends Component {
     });
     return (
       <div className="p-3">
+        <Navbar></Navbar>
         <h1>Our programs:</h1>
         <div className="row">{programs}</div>
       </div>
