@@ -1,0 +1,25 @@
+div.prev-next-btns {
+    height: auto;
+    bottom: 0px;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    column-gap: 10%;
+    margin: 3mm;
+}
+
+div.screen {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+div.content {
+    display: block inline;
+    margin-left: 3mm;
+    margin-right: 3mm;
+}
+
+div.prev-next-btns Button {
+    /*margin: 3mm;*/
+    width: 100%;
+}
