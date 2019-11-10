@@ -4,11 +4,36 @@ import FundingCard from "./components/Card";
 import Navbar from "./Navbar";
 
 class Funding extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      programs: []
+    };
+  }
+  componentDidMount() {
+    fetch("http://localhost:3001/api/all_programs", {
+      method: "get",
+      mode: "cors"
+    })
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data);
+        this.setState({ programs: data });
+      });
+  }
   render() {
-    var programs = ["a", "b", "c", "d", "e", "f", "g"].map(a => {
+    var programs = this.state.programs.map((data, i) => {
       return (
-        <div className="col-4">
-          <FundingCard title={a} />
+        <div className="col-md-4 col-sm-6" key={i}>
+          <FundingCard
+            img={data.img}
+            title={data.name}
+            collected={data.collected}
+            loc={data.location}
+            country={data.country}
+            yield={data.yield}
+            status={data.status}
+          />
           {/* */}
         </div>
       );
